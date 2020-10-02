@@ -12,4 +12,9 @@ class Product {
       'productPrice': productPrice
     };
   }
+
+  Product.fromFirestore(Map<String, dynamic> firestore)
+      : productId = firestore['productId'],
+        productName = firestore['productName'],
+        productPrice = firestore['productPrice'];
 }
