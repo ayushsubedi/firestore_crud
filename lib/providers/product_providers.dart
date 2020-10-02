@@ -18,4 +18,8 @@ class ProductProvider with ChangeNotifier {
     _price = double.parse(value);
     notifyListeners();
   }
+
+  saveProduct() {
+    print("$_name -> $_price");
+  }
 }
