@@ -29,6 +29,7 @@ class _EditProductState extends State<EditProduct> {
                 child: Text('Save'),
                 onPressed: () {
                   productProvider.saveProduct();
+                  Navigator.of(context).pop();
                 }),
             RaisedButton(
                 color: Colors.red,
