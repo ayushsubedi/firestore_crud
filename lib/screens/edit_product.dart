@@ -28,16 +28,32 @@ class _EditProductState extends State<EditProduct> {
     if (widget.product == null) {
       nameController.text = "";
       priceController.text = "";
+
+      //State update
+      new Future.delayed(Duration.zero, () {
+        final productProvider =
+            Provider.of<ProductProvider>(context, listen: false);
+        productProvider.loadValues(widget.product);
+      });
     } else {
+      //Controller update
       nameController.text = widget.product.productName;
       priceController.text = widget.product.productPrice.toString();
+
+      //State update
+      new Future.delayed(Duration.zero, () {
+        final productProvider =
+            Provider.of<ProductProvider>(context, listen: false);
+        productProvider.loadValues(widget.product);
+      });
     }
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final productProvider = Provider.of<ProductProvider>(context);
+    final productProvider =
+        Provider.of<ProductProvider>(context, listen: false);
     return Scaffold(
         appBar: AppBar(title: Text("Edit Product")),
         body: ListView(
