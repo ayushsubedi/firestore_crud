@@ -24,6 +24,10 @@ class Products extends StatelessWidget {
                   return ListTile(
                     title: Text(products[index].productName),
                     trailing: Text(products[index].productPrice.toString()),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => EditProduct(products[index])));
+                    },
                   );
                 })
             : Center(child: CircularProgressIndicator()));
