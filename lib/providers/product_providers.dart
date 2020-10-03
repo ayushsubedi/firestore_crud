@@ -34,9 +34,12 @@ class ProductProvider with ChangeNotifier {
     if (_productId == null) {
       _productId = uuid.v4();
     }
-
     var newProduct =
         Product(productName: name, productPrice: price, productId: productId);
     firestoreService.saveProduct(newProduct);
+  }
+
+  removeProduct(String productId) {
+    firestoreService.removeProduct(productId);
   }
 }

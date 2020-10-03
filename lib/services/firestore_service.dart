@@ -11,6 +11,10 @@ class FirestoreService {
         .set(product.toMap());
   }
 
+  Future<void> removeProduct(String productId) {
+    return _db.collection('products').doc(productId).delete();
+  }
+
   Stream<List<Product>> getProducts() {
     return _db.collection('products').snapshots().map((snapshot) => snapshot
         .docs

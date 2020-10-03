@@ -76,11 +76,17 @@ class _EditProductState extends State<EditProduct> {
                   productProvider.saveProduct();
                   Navigator.of(context).pop();
                 }),
-            RaisedButton(
-                color: Colors.red,
-                textColor: Colors.white,
-                child: Text('Delete'),
-                onPressed: () {})
+            (widget.product != null)
+                ? RaisedButton(
+                    color: Colors.red,
+                    textColor: Colors.white,
+                    child: Text('Delete'),
+                    onPressed: () {
+                      productProvider.removeProduct(widget.product.productId);
+                      Navigator.of(context).pop();
+                    },
+                  )
+                : Container(),
           ],
         ));
   }
