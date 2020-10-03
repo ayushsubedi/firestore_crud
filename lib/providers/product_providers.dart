@@ -24,9 +24,19 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  loadValues(Product product) {
+    _name = product.productName;
+    _price = product.productPrice;
+    _productId = product.productId;
+  }
+
   saveProduct() {
+    if (_productId == null) {
+      _productId = uuid.v4();
+    }
+
     var newProduct =
-        Product(productName: name, productPrice: price, productId: uuid.v4());
+        Product(productName: name, productPrice: price, productId: productId);
     firestoreService.saveProduct(newProduct);
   }
 }
