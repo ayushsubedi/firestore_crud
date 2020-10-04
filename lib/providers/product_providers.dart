@@ -37,6 +37,11 @@ class ProductProvider with ChangeNotifier {
     var newProduct =
         Product(productName: name, productPrice: price, productId: productId);
     firestoreService.saveProduct(newProduct);
+
+    // Resolves issue #18, probably a hacky way to resolve this
+    // ignore: todo
+    // TODO figure out the standard way
+    _productId = null;
   }
 
   removeProduct(String productId) {
