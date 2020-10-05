@@ -60,12 +60,19 @@ class _EditProductState extends State<EditProduct> {
           padding: const EdgeInsets.all(20.0),
           children: <Widget>[
             TextField(
-                controller: nameController,
-                decoration: InputDecoration(hintText: 'Product Name'),
-                onChanged: (value) => productProvider.changeName(value)),
+              controller: nameController,
+              decoration: InputDecoration(
+                hintText: 'Product Name',
+                errorText: 'Error Text',
+              ),
+              onChanged: (value) => productProvider.changeName(value),
+            ),
             TextField(
                 controller: priceController,
-                decoration: InputDecoration(hintText: 'Product Price'),
+                decoration: InputDecoration(
+                  hintText: 'Product Price',
+                  errorText: 'Error Text',
+                ),
                 onChanged: (value) => productProvider.changePrice(value)),
             SizedBox(height: 30),
             RaisedButton(
@@ -82,7 +89,9 @@ class _EditProductState extends State<EditProduct> {
                     textColor: Colors.white,
                     child: Text('Delete'),
                     onPressed: () {
-                      productProvider.removeProduct(widget.product.productId);
+                      productProvider.removeProduct(
+                        widget.product.productId,
+                      );
                       Navigator.of(context).pop();
                     },
                   )
