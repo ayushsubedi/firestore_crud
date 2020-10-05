@@ -25,9 +25,11 @@ class ProductProvider with ChangeNotifier {
   }
 
   loadValues(Product product) {
-    _name = product.productName;
-    _price = product.productPrice;
-    _productId = product.productId;
+    if (product != null) {
+      _name = product.productName;
+      _price = product.productPrice;
+      _productId = product.productId;
+    }
   }
 
   saveProduct() {
